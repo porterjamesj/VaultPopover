@@ -9,7 +9,10 @@
 import Cocoa
 
 class PopoverViewController: NSViewController {
-
+    
+    
+    @IBOutlet weak var text: NSTextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
@@ -17,12 +20,14 @@ class PopoverViewController: NSViewController {
 
     @IBAction func go(_ sender: NSButton) {
         // TODO better way to communicate with AppDelegate, or better place to put this code
+        let v = text.stringValue
         if let delegate = NSApplication.shared.delegate as? AppDelegate {
             delegate.switchToPrevApp()
+            delegate.closePopover(sender: sender)
         }
         // TODO subscribe to some notification that the app has been successfully activatd rather than just waiting X seconds
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-            sendString(s: "foo")
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300), execute: {
+            sendString(s: v)
         })
     }
     
