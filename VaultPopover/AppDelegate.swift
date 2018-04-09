@@ -9,59 +9,61 @@
 import Cocoa
 import Foundation
 import CoreGraphics
+import MASShortcut
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
+    
+    let popover = NSPopover()
+    
+    var prevApp = NSWorkspace.shared.frontmostApplication
+    
+    func printQuote(s: String) {
+        print(s)
+    }
+    
+    @objc func togglePopover(_ sender: Any?) {
+        if popover.isShown {
+            closePopover(sender: sender)
+        } else {
+            showPopover(sender: sender)
+        }
+    }
+    
+    func showPopover(sender: Any?) {
+        if let button = statusItem.button {
+            popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+        }
+    }
+    
+    func closePopover(sender: Any?) {
+        popover.performClose(sender)
+    }
 
-    func sendString(s: String) {
-        
-        // Create the base keyboard events.
-        let source = CGEventSource(stateID: .hidSystemState)
-        
-        guard let down = CGEvent(keyboardEventSource: source, virtualKey: 0, keyDown: true) else { return }
-        guard let up = CGEvent(keyboardEventSource: source, virtualKey: 0, keyDown: false) else { return }
-        
-        // Loop through each character in the UTF16 representation of the string.
-        for character in s.utf16 {
-            
-            // We can now cast it directly to a UniChar, update the events and post.
-            var unichar = character as UniChar
-            down.keyboardSetUnicodeString(stringLength: 1, unicodeString: &unichar)
-            up.keyboardSetUnicodeString(stringLength: 1, unicodeString: &unichar)
-            down.post(tap: .cghidEventTap)
-            up.post(tap: .cghidEventTap)
+    func savePreviousApp() {
+        prevApp = NSWorkspace.shared.frontmostApplication
+    }
+    
+    func switchToPrevApp() {
+        if let prev = prevApp {
+            prev.activate(options: [.activateIgnoringOtherApps])
         }
-    }
-    
-    @objc func printQuote(_ sender: Any?) {
-        sendString(s: "asda$%$%**&U::+››‡€")
-    }
-    
-    func keyboardKeyDown(key: CGKeyCode) {
-        let source = CGEventSource(stateID: .hidSystemState)
-        if let cgevent = CGEvent(keyboardEventSource: source, virtualKey: key, keyDown: true) {
-            if let nsevent = NSEvent(cgEvent: cgevent) {
-                if cgevent.type == .keyDown && nsevent.characters!.count > 0 {
-                    print(nsevent.characters!)
-                }
-            }
-        }
-        //event?.post(tap: .cghidEventTap)
-    }
-    
-    func keyboardKeyUp(key: CGKeyCode) {
-        let source = CGEventSource(stateID: .hidSystemState)
-        let event = CGEvent(keyboardEventSource: source, virtualKey: key, keyDown: false)
-        event?.post(tap: .cghidEventTap)
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         if let button = statusItem.button {
             button.image = NSImage(named:NSImage.Name("StatusBarLock"))
-            button.action = #selector(printQuote(_:))
+            //button.action = #selector(togglePopover(_:))
         }
+        popover.contentViewController = PopoverViewController.freshController()
+    
+        let shortcut = MASShortcut.init(keyCode: UInt(kVK_ANSI_J), modifierFlags: UInt(NSEvent.ModifierFlags.command.rawValue + NSEvent.ModifierFlags.shift.rawValue))
+        
+        MASShortcutMonitor.shared().register(shortcut, withAction: {
+            self.savePreviousApp()
+            self.togglePopover("foo") })
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
