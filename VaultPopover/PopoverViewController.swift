@@ -20,11 +20,17 @@ class PopoverViewController: NSViewController {
 
     override func viewWillAppear() {
         super.viewWillAppear()
+        
         NSApplication.shared.activate(ignoringOtherApps: true)
+        // TODO probably a cleaner way to just set the first responder in interface builder
         text.becomeFirstResponder()
     }
     
-    @IBAction func go(_ sender: NSButton) {
+    @IBAction func textFieldEnter(_ sender: Any) {
+        go(sender)
+    }
+    
+    @IBAction func go(_ sender: Any) {
         // TODO better way to communicate with AppDelegate, or better place to put this code
         let v = text.stringValue
         if let delegate = NSApplication.shared.delegate as? AppDelegate {
@@ -42,6 +48,8 @@ class PopoverViewController: NSViewController {
             }
 
             delegate.switchToPrevApp()
+            // TODO really what I'm trying to do here is "reset" the UI. I don't just want to close the popover, I want to get an entirely new instance of the view / viewcontroller maybe? I'm sort of manually doing this now but there's probably a cleaner way to just discard everything and start again.
+            text.stringValue = ""
             delegate.closePopover(sender: sender)
         }
     }
