@@ -18,6 +18,12 @@ class PopoverViewController: NSViewController {
         // Do view setup here.
     }
 
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        NSApplication.shared.activate(ignoringOtherApps: true)
+        text.becomeFirstResponder()
+    }
+    
     @IBAction func go(_ sender: NSButton) {
         // TODO better way to communicate with AppDelegate, or better place to put this code
         let v = text.stringValue

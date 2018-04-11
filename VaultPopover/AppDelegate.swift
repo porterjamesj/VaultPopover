@@ -18,6 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     let popover = NSPopover()
     
+    // TODO more sensible default? seems weird to grab this nonsense
     var prevApp = NSWorkspace.shared.frontmostApplication
     
     func printQuote(s: String) {
@@ -63,7 +64,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         MASShortcutMonitor.shared().register(shortcut, withAction: {
             self.savePreviousApp()
-            self.togglePopover("foo") })
+            self.togglePopover("foo")
+        })
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
