@@ -28,13 +28,22 @@ class PopoverViewController: NSViewController {
         // TODO better way to communicate with AppDelegate, or better place to put this code
         let v = text.stringValue
         if let delegate = NSApplication.shared.delegate as? AppDelegate {
+
+            // autotype once we've switched back to the previously active app
+            let center = NSWorkspace.shared.notificationCenter
+            var token: NSObjectProtocol?
+            token = center.addObserver(forName: NSWorkspace.didActivateApplicationNotification, object: nil, queue: nil) { (note)  in
+                if let info = note.userInfo,
+                    let app = info[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication,
+                    app == delegate.prevApp {
+                    sendString(s: v)
+                    center.removeObserver(token!)
+                }
+            }
+
             delegate.switchToPrevApp()
             delegate.closePopover(sender: sender)
         }
-        // TODO subscribe to some notification that the app has been successfully activatd rather than just waiting X seconds
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300), execute: {
-            sendString(s: v)
-        })
     }
     
     static func freshController() -> PopoverViewController {
