@@ -702,7 +702,7 @@ DQ
                                     <action selector="activateAndSend:" target="XfG-lQ-9wD" id="eTe-1K-TJs"/>
                                 </connections>
                             </button>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ma0-O6-V7w">
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ma0-O6-V7w" customClass="NSSecureTextField">
                                 <rect key="frame" x="20" y="20" width="233" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="xQZ-hn-Ws8">
