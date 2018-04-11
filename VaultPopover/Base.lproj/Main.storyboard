@@ -694,9 +694,12 @@
                                 <buttonCell key="cell" type="push" title="Enter" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Su8-0u-4k3">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="go:" target="XfG-lQ-9wD" id="eTe-1K-TJs"/>
+                                    <action selector="activateAndSend:" target="XfG-lQ-9wD" id="eTe-1K-TJs"/>
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ma0-O6-V7w">
@@ -708,13 +711,13 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <action selector="textFieldEnter:" target="XfG-lQ-9wD" id="fiT-oa-Ap5"/>
+                                    <action selector="activateAndSend:" target="XfG-lQ-9wD" id="fiT-oa-Ap5"/>
                                 </connections>
                             </textField>
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="text" destination="Ma0-O6-V7w" id="q3d-zI-wrD"/>
+                        <outlet property="passInput" destination="Ma0-O6-V7w" id="q3d-zI-wrD"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
