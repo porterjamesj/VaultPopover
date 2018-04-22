@@ -27,7 +27,7 @@ class PopoverViewController: NSViewController, NSTextFieldDelegate {
         
         NSApplication.shared.activate(ignoringOtherApps: true)
         // TODO probably a cleaner way to just set the first responder in interface builder
-        passInput.becomeFirstResponder()
+        serviceInput.becomeFirstResponder()
     }
     
     public override func controlTextDidChange(_ obj: Notification) {
