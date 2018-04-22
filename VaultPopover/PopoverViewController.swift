@@ -8,22 +8,34 @@
 
 import Cocoa
 
-class PopoverViewController: NSViewController {
-    
+class PopoverViewController: NSViewController, NSTextFieldDelegate {
     
     @IBOutlet weak var passInput: NSTextField!
     
+    @IBOutlet weak var serviceInput: NSTextField!
+    
+    @IBOutlet weak var button: NSButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        passInput.delegate = self
+        serviceInput.delegate = self
     }
-
+    
     override func viewWillAppear() {
         super.viewWillAppear()
         
         NSApplication.shared.activate(ignoringOtherApps: true)
         // TODO probably a cleaner way to just set the first responder in interface builder
         passInput.becomeFirstResponder()
+    }
+    
+    public override func controlTextDidChange(_ obj: Notification) {
+        if passInput.stringValue.isEmpty || serviceInput.stringValue.isEmpty {
+            button.isEnabled = false
+        } else {
+            button.isEnabled = true
+        }
     }
     
     @IBAction func activateAndSend(_ sender: Any) {
