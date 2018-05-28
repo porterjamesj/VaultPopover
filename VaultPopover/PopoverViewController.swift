@@ -30,6 +30,8 @@ class PopoverViewController: NSViewController, NSTextFieldDelegate {
         serviceInput.becomeFirstResponder()
     }
     
+    // TODO refactor this into a separate delegate object?
+    // seems messy / unclear to keep it here
     public override func controlTextDidChange(_ obj: Notification) {
         if passInput.stringValue.isEmpty || serviceInput.stringValue.isEmpty {
             button.isEnabled = false
@@ -90,4 +92,8 @@ func sendString(s: String) {
         down.post(tap: .cghidEventTap)
         up.post(tap: .cghidEventTap)
     }
+}
+
+func runVault(service: String, masterPassword: String) {
+    
 }

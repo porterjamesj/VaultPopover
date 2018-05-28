@@ -66,6 +66,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self.savePreviousApp()
             self.togglePopover("foo")
         })
+        
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {

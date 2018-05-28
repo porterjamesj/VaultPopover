@@ -8,10 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		1A32235C20718429008197F2 /* MASShortcut.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1A32235B20718429008197F2 /* MASShortcut.framework.dSYM */; };
+		1A8546F7208E0B4300A29304 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8546F6208E0B4300A29304 /* Loader.swift */; };
+		1A8546F9208E0E3200A29304 /* Cipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8546F8208E0E3200A29304 /* Cipher.swift */; };
 		1ADEA7F8207185BE00FAF8A3 /* MASShortcut.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A322358207181FC008197F2 /* MASShortcut.framework */; };
 		1ADEA7F9207185BE00FAF8A3 /* MASShortcut.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A322358207181FC008197F2 /* MASShortcut.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1AEA78372071900500FC0169 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEA78352071900500FC0169 /* PopoverViewController.swift */; };
 		1AEA78382071900500FC0169 /* PopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AEA78362071900500FC0169 /* PopoverViewController.xib */; };
+		1AF33902209E563B00A771C1 /* CryptoSwift.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1AF33901209E563B00A771C1 /* CryptoSwift.framework.dSYM */; };
+		1AF33904209E568B00A771C1 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF33903209E568B00A771C1 /* CryptoSwift.framework */; };
+		1AF33905209E568B00A771C1 /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF33903209E568B00A771C1 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1AFDE31420685AA4001D6676 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFDE31320685AA4001D6676 /* AppDelegate.swift */; };
 		1AFDE31620685AA4001D6676 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFDE31520685AA4001D6676 /* ViewController.swift */; };
 		1AFDE31820685AA4001D6676 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AFDE31720685AA4001D6676 /* Assets.xcassets */; };
@@ -25,6 +30,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				1AF33902209E563B00A771C1 /* CryptoSwift.framework.dSYM in CopyFiles */,
 				1A32235C20718429008197F2 /* MASShortcut.framework.dSYM in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -36,6 +42,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				1ADEA7F9207185BE00FAF8A3 /* MASShortcut.framework in Embed Frameworks */,
+				1AF33905209E568B00A771C1 /* CryptoSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -45,8 +52,12 @@
 /* Begin PBXFileReference section */
 		1A322358207181FC008197F2 /* MASShortcut.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MASShortcut.framework; path = Carthage/Build/Mac/MASShortcut.framework; sourceTree = "<group>"; };
 		1A32235B20718429008197F2 /* MASShortcut.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = MASShortcut.framework.dSYM; path = Carthage/Build/Mac/MASShortcut.framework.dSYM; sourceTree = "<group>"; };
+		1A8546F6208E0B4300A29304 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
+		1A8546F8208E0E3200A29304 /* Cipher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cipher.swift; sourceTree = "<group>"; };
 		1AEA78352071900500FC0169 /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		1AEA78362071900500FC0169 /* PopoverViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopoverViewController.xib; sourceTree = "<group>"; };
+		1AF33901209E563B00A771C1 /* CryptoSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = CryptoSwift.framework.dSYM; path = Carthage/Build/Mac/CryptoSwift.framework.dSYM; sourceTree = "<group>"; };
+		1AF33903209E568B00A771C1 /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/Mac/CryptoSwift.framework; sourceTree = "<group>"; };
 		1AFDE31020685AA4001D6676 /* VaultPopover.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VaultPopover.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AFDE31320685AA4001D6676 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AFDE31520685AA4001D6676 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +73,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1ADEA7F8207185BE00FAF8A3 /* MASShortcut.framework in Frameworks */,
+				1AF33904209E568B00A771C1 /* CryptoSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,9 +83,11 @@
 		1AFDE30720685AA4001D6676 = {
 			isa = PBXGroup;
 			children = (
+				1AF33901209E563B00A771C1 /* CryptoSwift.framework.dSYM */,
 				1A32235B20718429008197F2 /* MASShortcut.framework.dSYM */,
 				1AFDE31220685AA4001D6676 /* VaultPopover */,
 				1AFDE31120685AA4001D6676 /* Products */,
+				1AF33903209E568B00A771C1 /* CryptoSwift.framework */,
 				1A322358207181FC008197F2 /* MASShortcut.framework */,
 			);
 			sourceTree = "<group>";
@@ -97,6 +111,8 @@
 				1AFDE31920685AA4001D6676 /* Main.storyboard */,
 				1AFDE31C20685AA4001D6676 /* Info.plist */,
 				1AFDE31D20685AA4001D6676 /* VaultPopover.entitlements */,
+				1A8546F6208E0B4300A29304 /* Loader.swift */,
+				1A8546F8208E0E3200A29304 /* Cipher.swift */,
 			);
 			path = VaultPopover;
 			sourceTree = "<group>";
@@ -182,6 +198,8 @@
 			files = (
 				1AFDE31620685AA4001D6676 /* ViewController.swift in Sources */,
 				1AEA78372071900500FC0169 /* PopoverViewController.swift in Sources */,
+				1A8546F9208E0E3200A29304 /* Cipher.swift in Sources */,
+				1A8546F7208E0B4300A29304 /* Loader.swift in Sources */,
 				1AFDE31420685AA4001D6676 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
